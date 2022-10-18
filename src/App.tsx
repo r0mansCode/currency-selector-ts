@@ -61,7 +61,6 @@ export const App = () => {
 
   return (
     <div className="App">
-      <div>learn react</div>
       <div className="container">
         <div className="subContainer subContainer-selected">
           {data.map((item: CurrencyItem, ind: number) => (

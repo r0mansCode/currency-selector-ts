@@ -1,38 +1,113 @@
-.App {
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+.container {
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 3px 3px 10px rgb(134, 134, 134);
+  border: 1px solid grey;
+}
+
+.subContainer {
+  box-sizing: border-box;
+  padding: 12px;
+  display: flex;
+  flex-direction: row;
+  width: 250px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.subContainer-selected {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.currencyItem {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  height: fit-content;
+  padding: 4px;
+  margin-block: 4px;
+  width: 70px;
+  border: 1px solid grey;
+  color: darkblue;
+  cursor: pointer;
+}
+
+.currencyItem:hover {
+  opacity: 0.8;
+}
+
+.currencyItem-selected {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(235, 235, 235);
+  border: none;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.checkbox {
+  position: relative;
+  box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+  margin-right: 4px;
+  cursor: pointer;
+  vertical-align: middle;
+  border: 1px solid rgba(153, 153, 153, 1);
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.checkbox:checked {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  border-radius: 4px;
+}
+
+.checkbox:checked::before {
+  content: "\d7";
+  color: red;
+  font-size: 30px;
+}
+
+.removeIcon {
+  box-sizing: border-box;
+  position: absolute;
+  box-sizing: border-box;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  translate: 62px -42px;
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.removeIcon:hover {
+  background-color: white;
+}
+
+.removeIcon:hover::before {
+  color: black;
+}
+
+.removeIcon::before {
+  content: "\d7";
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  font-size: 18px;
 }
