@@ -36,28 +36,28 @@ type CurrencyItem = {
 export const App = () => {
   const [data, setData] = useState([]);
 
-  // const handleAddCurrency = (item: any) => {
-  //   const checkDuplicate = () => {
-  //     return data.some((someEl) => someEl["name"] === item.id);
-  //   };
-  //   const newItem: CurrencyItem = { name: item.id };
-  //   if (checkDuplicate()) {
-  //     const filteredArray = () => {
-  //       return data.filter((filtEl) => filtEl["name"] !== item.id);
-  //     };
-  //     setData(filteredArray);
-  //   } else {
-  //     const updatedData: any = [...data, newItem];
-  //     setData(updatedData);
-  //   }
-  // };
+  const handleAddCurrency = (item: any) => {
+    const checkDuplicate = () => {
+      return data.some((someEl) => someEl["name"] === item.id);
+    };
+    const newItem: CurrencyItem = { name: item.id };
+    if (checkDuplicate()) {
+      const filteredArray = () => {
+        return data.filter((filtEl) => filtEl["name"] !== item.id);
+      };
+      setData(filteredArray);
+    } else {
+      const updatedData: any = [...data, newItem];
+      setData(updatedData);
+    }
+  };
 
-  // const findElement = (item: any) => {
-  //   const isFound = () => {
-  //     return data.some((someEl) => someEl["name"] === item);
-  //   };
-  //   return isFound() ? "white" : "rgb(235, 235, 235)";
-  // };
+  const findElement = (item: any) => {
+    const isFound = () => {
+      return data.some((someEl) => someEl["name"] === item);
+    };
+    return isFound() ? "white" : "rgb(235, 235, 235)";
+  };
 
   return (
     <div className="App">
@@ -78,15 +78,15 @@ export const App = () => {
             <label
               key={ind}
               className="currencyItem"
-              // style={{ backgroundColor: findElement(item.name) }}
+              style={{ backgroundColor: findElement(item.name) }}
             >
               <input
-                // style={{ backgroundColor: findElement(item.name) }}
+                style={{ backgroundColor: findElement(item.name) }}
                 key={ind}
                 id={item.name}
                 type="checkbox"
                 className="checkbox"
-                // onChange={(e) => handleAddCurrency(e.currentTarget)}
+                onChange={(e) => handleAddCurrency(e.currentTarget)}
                 name={item.name}
               ></input>
               {item.name}
