@@ -1,30 +1,3 @@
-// import React from 'react';
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.tsx</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
-
 import { useState } from "react";
 import currencyList from "./data/currencyList.json";
 import "./App.css";
@@ -72,12 +45,13 @@ export const App = () => {
             </div>
           ))}
         </div>
-        <div className="subContainer ">
+        <div className="subContainer " data-testid="currencyContainer">
           {currencyList.map((item: CurrencyItem, ind: number) => (
             <label
               key={ind}
               className="currencyItem"
               style={{ backgroundColor: findElement(item.name) }}
+              data-testid="currencyLabel"
             >
               <input
                 style={{ backgroundColor: findElement(item.name) }}
@@ -87,6 +61,7 @@ export const App = () => {
                 className="checkbox"
                 onChange={(e) => handleAddCurrency(e.currentTarget)}
                 name={item.name}
+                role="option"
               ></input>
               {item.name}
             </label>

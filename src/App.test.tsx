@@ -1,9 +1,27 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import Adapter from "enzyme-adapter-react-16";
+import { shallow, configure } from "enzyme";
+import App from "./App";
+import { render, fireEvent, screen } from "@testing-library/react";
+import currencyList from "./data/currencyList.json";
 
-test('renders learn react link', () => {
+configure({ adapter: new Adapter() });
+
+describe("App", () => {
+  it("renders correctly", () => {
+    shallow(<App />);
+  });
+});
+
+it("should display the correct number of currencies available", () => {
+  const data = currencyList;
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(screen.getAllByTestId("currencyLabel").length).toBe(9);
+});
+
+describe("<App />", () => {
+  it("should display that currency was added after clicking on it", () => {
+    render(<App />);
+    fireEvent.click(screen.getByText(/EUR/i));
+    expect(screen.getAllByText(/EUR/i).length).toBe(2);
+  });
 });
